@@ -9,9 +9,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
+import useProfile from "../../../Zustand/useProfile";
 
 const Profile = () => {
-  const id = useParams().id;
+  const { userId } = useProfile();
 
   const [userData, setUserData] = useState({
     username: "",
@@ -24,7 +25,7 @@ const Profile = () => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/user/${id}`, {
+        const res = await axios.get(`http://localhost:8000/user/${userId}`, {
           withCredentials: true,
         });
 
@@ -36,12 +37,12 @@ const Profile = () => {
     };
 
     getUserData();
-  }, [id]);
+  }, [userId]);
 
   const handleSave = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:8000/user/${id}/update`,
+        `http://localhost:8000/user/${userId}/update`,
         userData,
         {
           withCredentials: true,

@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { jwtDecode } from "jwt-decode";
 
-
 const useProfile = create((set) => {
   const getUser = () => {
     if (localStorage.getItem("token_user")) {

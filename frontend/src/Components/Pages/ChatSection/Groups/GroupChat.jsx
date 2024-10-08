@@ -31,11 +31,9 @@ const GroupChat = () => {
     };
 
     const newUserJoinedGroup = (data) => {
-      setOnlineMembers((prev) => {
-        const newSet = new Set(prev);
-        data.map((user) => newSet.add(user));
-        return Array.from(newSet);
-      });
+      // console.log("Online User: ",data);
+      
+      setOnlineMembers(data);
     };
 
     const newGroupMessage = (data)=>{
@@ -49,7 +47,8 @@ const GroupChat = () => {
             username : data.user.username,
             displayName : data.user.displayName,
             profilePicture : data.user.profilePicture,
-            phoneNumber : data.user.phoneNumber
+            phoneNumber : data.user.phoneNumber,
+            // createdAt : data.user.createdAt
           }
         }]}
       })
@@ -57,7 +56,7 @@ const GroupChat = () => {
 
     socket.emit("new-user-joined-group", { groupId, senderId: userId });
 
-    socket.on("new-user-joined-group", newUserJoinedGroup);
+    socket.on("total-user-joined-group", newUserJoinedGroup);
 
     socket.on("new-group-message", newGroupMessage);
 
@@ -104,6 +103,8 @@ const GroupChat = () => {
         <div className="flex">
           {groupInfo.members &&
             groupInfo.members.map((member) => {
+              console.log("Online Members: ", onlineMembers);
+              
               return (
                 <div key={member._id} className={`p-2 rounded-md text-xs `}>
                   <h1

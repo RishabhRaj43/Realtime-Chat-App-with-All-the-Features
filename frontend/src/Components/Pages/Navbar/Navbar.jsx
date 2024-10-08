@@ -42,6 +42,8 @@ const Navbar = () => {
         senderId: userId,
       });
 
+      socket.emit("disconnected-from-group", { senderId: userId });
+
       logout();
     } catch (error) {
       console.log(error);

@@ -194,7 +194,7 @@ export const sendGroupMessage = async (req, res) => {
 
     const group = await Group.findById(groupId);
     if (!group) {
-      return res.status(404).json("Group not found");
+      return res.status(404).json({message:"Group not found"});
     }
 
     const message = {
@@ -204,7 +204,7 @@ export const sendGroupMessage = async (req, res) => {
 
     group.messages.push(message);
     await group.save();
-    return res.status(200).json("group");
+    return res.status(200).json(group);
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);

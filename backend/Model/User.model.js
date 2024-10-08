@@ -55,10 +55,10 @@ const userSchema = new mongoose.Schema({
       ref: "User",
     },
   ],
-  chats: [
+  groups: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Chat",
+      ref: "Group",
     },
   ],
 });

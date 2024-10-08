@@ -1,4 +1,3 @@
-import Chat from "../Model/Chat.model.js";
 import Message from "../Model/Message.model.js";
 import User from "../Model/User.model.js";
 

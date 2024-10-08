@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import useProfile from "../../../Zustand/useProfile";
 import { Link, useParams } from "react-router-dom";
-import useSocket from "../../../Zustand/useSocket";
+import useSocket from "../../../../Zustand/useSocket";
+import useProfile from "../../../../Zustand/useProfile";
 
 const UserGetChat = () => {
   const { userId } = useProfile();

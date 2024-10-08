@@ -76,7 +76,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <Link to={`/${userId}/getGroup`} onClick={() => setOpen(false)}>
+          <Link to={`/${userId}/getGroups`} onClick={() => setOpen(false)}>
             <div className="flex justify-center items-center my-8">
               <FontAwesomeIcon icon={faPeopleGroup} size="xl" />
               <h3 className={`${!sidebarOpen && "hidden"} p-2 text-2xl`}>

@@ -16,8 +16,8 @@ groupRouter.get("/:senderId/getGroupInfo/:groupId", getGroupInfo);
 groupRouter.get("/:senderId/getGroupMessages/:groupId", getGroupMessages);
 groupRouter.post("/:senderId/createGroup", createGroup);
 
-groupRouter.put("/:senderId/joinGroup", joinGroup);
-groupRouter.put("/:senderId/leaveGroup", leaveGroup);
+groupRouter.post("/:senderId/joinGroup", joinGroup);
+groupRouter.post("/:senderId/leaveGroup", leaveGroup);
 
 groupRouter.post("/:senderId/sendGroupMessage/:groupId",sendGroupMessage )
 

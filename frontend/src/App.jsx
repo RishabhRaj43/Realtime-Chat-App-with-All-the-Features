@@ -8,8 +8,11 @@ import Signup from "./Components/Pages/LoginSignup/Signup";
 import useProfile from "./Zustand/useProfile";
 import Profile from "./Components/Pages/Profile/Profile";
 import SaveContact from "./Components/Pages/SaveContact/SaveContact";
-import Userchat from "./Components/Pages/ChatSection/Userchat";
-import UserGetChat from "./Components/Pages/ChatSection/UserGetChat";
+import UserGetChat from "./Components/Pages/ChatSection/Chats/UserGetChat";
+import Userchat from "./Components/Pages/ChatSection/Chats/Userchat";
+import GetGroups from "./Components/Pages/ChatSection/Groups/GetGroups";
+import GroupChat from "./Components/Pages/ChatSection/Groups/GroupChat";
+
 
 const App = () => {
   const { isLoggedIn } = useProfile();
@@ -22,8 +25,12 @@ const App = () => {
           <div className="pl-[50px] w-full h-screen">
             <Routes>
               <Route path="/" element={<Home />} />
+              
               <Route path = "/:id/getChat" element = {<UserGetChat />} />
               <Route path="/:senderId/chat/:receiverId" element={<Userchat />} />
+              <Route path="/:senderId/getGroups" element={<GetGroups />} />
+              <Route path="/:senderId/groupchat/:groupId" element={<GroupChat />} />
+              
               <Route path="/save-contact" element={<SaveContact />} />
               <Route path="/profile/:id" element={<Profile />} />
             </Routes>

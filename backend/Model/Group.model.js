@@ -33,7 +33,7 @@ const groupSchema = new mongoose.Schema(
           type: String,
           required: true,
         },
-        timestamp: {
+        createdAt: {
           type: Date,
           default: Date.now,
         },

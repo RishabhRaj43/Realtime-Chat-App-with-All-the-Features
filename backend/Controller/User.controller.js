@@ -19,11 +19,18 @@ export const createUser = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
+    if (phoneNumber.length !== 10) {
+      if (isNaN(phoneNumber)) {
+        return res.status(400).json({ message: "Invalid phone number" });
+      }
+      return res
+        .status(400)
+        .json({ message: "Phone number must be 10 digits" });
+    }
+
     const existingUser = await User.findOne({
       $or: [{ username }, { email }, { phoneNumber }],
     });
-
-    console.log("existingUser: ", existingUser);
 
     if (existingUser) {
       if (existingUser.email === email)
@@ -34,11 +41,7 @@ export const createUser = async (req, res) => {
         return res.status(400).json({ message: "Phone number already exists" });
     }
 
-    console.log("No existing user found");
-
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log("hashedPassword: ", hashedPassword);
-
     const user = await User.create({
       username,
       email,
@@ -49,8 +52,6 @@ export const createUser = async (req, res) => {
     });
 
     const token = jsonSetToken(user._id, res);
-    console.log("token: ", token);
-
     return res
       .status(201)
       .json({ token, message: "User created successfully" });
@@ -253,13 +254,11 @@ export const blockContact = async (req, res) => {
     }
     await user.save();
 
-    return res
-      .status(200)
-      .json({
-        message: !user.blocked.includes(receiverId)
-          ? "unblocked successfully"
-          : "blocked successfully",
-      });
+    return res.status(200).json({
+      message: !user.blocked.includes(receiverId)
+        ? "unblocked successfully"
+        : "blocked successfully",
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);

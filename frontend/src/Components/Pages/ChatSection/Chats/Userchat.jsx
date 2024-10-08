@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import useProfile from "../../../Zustand/useProfile";
 import { useParams } from "react-router-dom";
-import useSocket from "../../../Zustand/useSocket";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBan,
@@ -10,6 +8,8 @@ import {
   faVideoCamera,
 } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
+import useProfile from "../../../../Zustand/useProfile";
+import useSocket from "../../../../Zustand/useSocket";
 
 const Userchat = () => {
   const { userId } = useProfile();

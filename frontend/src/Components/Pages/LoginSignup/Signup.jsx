@@ -53,7 +53,7 @@ const Signup = () => {
       navigate("/");
     } catch (error) {
       console.log(error.response);
-      toast.error(error.response.data.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -176,7 +176,7 @@ const Signup = () => {
               <input
                 type="text"
                 name="displayName"
-                value={formData.displayName.trim()}
+                value={formData.displayName}
                 onChange={handleChange}
                 className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
               />
